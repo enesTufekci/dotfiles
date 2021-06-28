@@ -1,0 +1,263 @@
+;==========================================================
+;
+;
+;   ██████╗  ██████╗ ██╗  ██╗   ██╗██████╗  █████╗ ██████╗
+;   ██╔══██╗██╔═══██╗██║  ╚██╗ ██╔╝██╔══██╗██╔══██╗██╔══██╗
+;   ██████╔╝██║   ██║██║   ╚████╔╝ ██████╔╝███████║██████╔╝
+;   ██╔═══╝ ██║   ██║██║    ╚██╔╝  ██╔══██╗██╔══██║██╔══██╗
+;   ██║     ╚██████╔╝███████╗██║   ██████╔╝██║  ██║██║  ██║
+;   ╚═╝      ╚═════╝ ╚══════╝╚═╝   ╚═════╝ ╚═╝  ╚═╝╚═╝  ╚═╝
+;
+;
+;   To learn more about how to configure Polybar
+;   go to https://github.com/jaagr/polybar
+;
+;   The README contains alot of information
+;
+;==========================================================
+
+[colors]
+background = #aa32302f
+foreground_active = #ebdbb2
+foreground_passive = #aa999999
+background-alt = #aa090909
+foreground = #dfdfdf
+foreground-alt = #555
+primary = #C251BD
+secondary = #8AB2FC
+alert = #9FC4D9
+label = #cc000000
+deep = #C251BD
+
+
+[bar/main]
+monitor = ${env:MONITOR:eDP-1-1}
+width = 98.9%
+height = 64
+radius = 6.0
+fixed-center = false
+bottom = false
+enable-ipc = true
+background = ${colors.background}
+foreground = ${colors.foreground}
+
+line-size = 4
+line-color = #f00
+
+border-size = 0
+border-color = #00000000
+
+module-margin = 2
+
+padding-left = 2
+padding-right = 2
+padding-bottom= 10
+
+offset-y = 12
+offset-x = 20
+override-redirect = true
+
+font-0 = SF Mono:style=semibold:size=20;5
+font-1 = FontAwesome:size=20;5
+
+modules-left = xwindow
+; modules-center = weather
+modules-right = weather temperature network pulseaudio battery date
+
+tray-position = none
+tray-padding = 2
+;tray-transparent = true
+;tray-background = #0063ff
+
+wm-restack = i3
+
+;override-redirect = true
+
+
+;scroll-up = i3wm-wsnext
+;scroll-down = i3wm-wsprev
+
+cursor-click = pointer
+cursor-scroll = ns-resize
+
+[module/xwindow]
+type = internal/xwindow
+label = %title:0:70:...%
+label-foreground = ${colors.foreground_active}
+
+[module/xkeyboard]
+type = internal/xkeyboard
+blacklist-0 = num lock
+
+format-prefix = " "
+format-prefix-foreground = ${colors.foreground-alt}
+format-prefix-underline = ${colors.secondary}
+
+label-layout = %layout%
+label-layout-underline = ${colors.secondary}
+
+label-indicator-padding = 2
+label-indicator-margin = 1
+label-indicator-background = ${colors.secondary}
+label-indicator-underline = ${colors.secondary}
+
+[module/i3]
+type = internal/i3
+pin-workspaces = true
+strip-wsnumbers = true
+index-sort = true
+enable-click = false
+enable-scroll = false
+wrapping-scroll = false
+reverse-scroll = false
+fuzzy-match = true
+
+label-focused = %index%
+label-focused-foreground = ${colors.foreground_active}
+label-focused-padding = 1
+
+label-unfocused = %index%
+label-unfocused-padding = 1
+label-unfocused-foreground = ${colors.foreground_passive}
+
+[module/network]
+type = internal/network
+interface = wlp0s20f3
+interval = 3.0
+ping-interval = 3
+accumulate-stats = true
+unknown-as-up = true
+; Available tags:
+;   <label-connected> (default)
+;   <ramp-signal>
+format-connected = <label-connected>
+
+; Available tags:
+;   <label-disconnected> (default)
+format-disconnected = <label-disconnected>
+
+; Available tags:
+;   <label-connected> (default)
+;   <label-packetloss>
+;   <animation-packetloss>
+format-packetloss = <label-connected>
+label-connected =  %essid% - %downspeed%
+label-connected-foreground = ${colors.foreground_active}
+
+; Default: (none)
+label-disconnected = not connected
+label-disconnected-foreground = #66ffffff
+
+
+[module/date]
+type = internal/date
+interval = 1.0
+date = %a %b %d
+; Optional time format
+time = %H:%M
+label =  %date%  %time%
+label-foreground = ${colors.foreground_active}
+
+[module/battery]
+type = internal/battery
+full-at = 98
+; Use the following command to list batteries and adapters:
+; $ ls -1 /sys/class/power_supply/
+battery = BAT0
+adapter = AC
+poll-interval = 5
+
+format-charging = <animation-charging> <label-charging>
+format-discharging = <ramp-capacity> <label-discharging>
+label-full =  %percentage%%
+label-full-foreground = ${colors.foreground_active}
+ramp-capacity-0 = 
+ramp-capacity-0-foreground = ${colors.foreground_active}
+ramp-capacity-1 = 
+ramp-capacity-1-foreground = ${colors.foreground_active}
+ramp-capacity-2 = 
+ramp-capacity-3 = 
+ramp-capacity-4 = 
+ramp-capacity-foreground = ${colors.foreground_passive}
+
+animation-charging-0 = 
+animation-charging-1 = 
+animation-charging-2 = 
+animation-charging-3 = 
+animation-charging-4 = 
+animation-charging-foreground = ${colors.foreground_active}
+animation-charging-framerate = 750
+
+[module/pulseaudio]
+type = internal/pulseaudio
+
+; Sink to be used, if it exists (find using `pacmd list-sinks`, name field)
+; If not, uses default sink
+sink = alsa_output.pci-0000_12_00.3.analog-stereo
+
+; Use PA_VOLUME_UI_MAX (~153%) if true, or PA_VOLUME_NORM (100%) if false
+; Default: true
+use-ui-max = true
+
+; Interval for volume increase/decrease (in percent points)
+; Default: 5
+interval = 5
+; Available tags:
+;   <label-volume> (default)
+;   <ramp-volume>
+;   <bar-volume>
+format-volume = <ramp-volume> <label-volume>
+; Available tags:
+;   <label-muted> (default)
+;   <ramp-volume>
+;   <bar-volume>
+;format-muted = <label-muted>
+
+; Available tokens:
+;   %percentage% (default)
+;   %decibels%
+;label-volume = %percentage%%
+
+; Available tokens:
+;   %percentage% (default)
+;   %decibels%
+label-muted = muted
+label-muted-foreground = #666
+label-volume-foreground = ${colors.foreground_active}
+; Only applies if <ramp-volume> is used
+ramp-volume-0 = 
+ramp-volume-1 = 
+ramp-volume-2 = 
+
+ramp-volume-0-foreground = ${colors.foreground_active}
+ramp-volume-1-foreground = ${colors.foreground_active}
+ramp-volume-2-foreground = ${colors.foreground_active}
+; Right and Middle click
+click-right = pavucontrol
+; click-middle =
+
+[module/temperature]
+type = custom/script
+exec = i8kctl temp
+label-foreground=${colors.foreground_active}
+interval = 1
+
+
+[module/weather]
+type = custom/script
+exec = ~/.config/polybar/weather
+label-foreground=${colors.foreground_active}
+interval = 300
+
+[settings]
+screenchange-reload = true
+;compositing-background = xor
+;compositing-background = screen
+;compositing-foreground = source
+;compositing-border = over
+
+[global/wm]
+margin-top = 0
+margin-bottom = 0
+
+; vim:ft=dosini
