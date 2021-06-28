@@ -22,8 +22,13 @@ const icons: Record<string, string> = {
   "50n": "",
 };
 
+const apiId = "5b1efdd5ec6ddb4b32d1cafbb61ca7ce"
+
+
 const URL =
-  "https://api.openweathermap.org/data/2.5/weather?q=Hamburg&appid=${process.env.WEATHER_API_ID}&units=metric";
+  `https://api.openweathermap.org/data/2.5/weather?q=Hamburg&appid=${apiId}&units=metric`;
+
+
 
 try {
   const res = await fetch(URL);
