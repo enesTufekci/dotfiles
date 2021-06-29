@@ -17,7 +17,7 @@
 ;==========================================================
 
 [colors]
-background = #aa32302f
+background = #2232302f
 foreground_active = #ebdbb2
 foreground_passive = #aa999999
 background-alt = #aa090909
@@ -34,7 +34,7 @@ deep = #C251BD
 monitor = ${env:MONITOR:eDP-1-1}
 width = 98.9%
 height = 64
-radius = 6.0
+radius = 24.0
 fixed-center = false
 bottom = false
 enable-ipc = true

@@ -131,3 +131,5 @@
   (interactive "P")
   (+ivy/project-search arg (car counsel-git-grep-history)))
 (map! :leader "s ." #'rerun-last-search)
+
+;; Hello
