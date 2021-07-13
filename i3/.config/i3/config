@@ -13,7 +13,7 @@ set $mod Mod4
 
 # Font for window titles. Will also be used by the bar unless a different font
 # is used in the bar {} block below.
-font pango: SF Mono 10
+font pango: SF Mono 0
 # This font is widely installed, provides lots of unicode glyphs, right-to-left
 # text rendering and scalability on retina/hidpi displays (thanks to pango).
 #font pango:DejaVu Sans Mono 8
@@ -31,11 +31,11 @@ exec --no-startup-id nm-applet
 
 # Background
 exec --no-startup-id nitrogen --restore
-exec --no-startup-id davmail
 exec --no-startup-id redshift -l 53.5969031:9.9777908
 exec --no-startup-id betterlockscreen -w dim
 exec --no-startup-id source ~/.fehbg
 exec --no-startup-id dunst -config ~/.config/dunst/dunstrc
+exec --no-startup-id davmail ~/.config/.davmail.properties &
 exec_always --no-startup-id ~/.config/polybar/launch.sh &
 
 # Use pactl to adjust volume in PulseAudio.
@@ -231,12 +231,12 @@ for_window [class=Xfburn|GParted|System-config-printer.py|Lxtask|Pavucontrol|Exo
 
 
 # colour of border, background, text, indicator, and child_border
-client.focused              #000000 #161618 #d8dee8 #bf616a #d8dee8
-client.focused_inactive     #000000 #000000 #d8dee8 #2f343f #2f343f
-client.unfocused            #000000 #000000 #56585C #2f343f #2f343f
-client.urgent               #000000 #000000 #d8dee8 #2f343f #2f343f
-client.placeholder          #000000 #000000 #d8dee8 #2f343f #2f343f
-client.background           #000000
+client.focused              #00000000 #00161618 #d8dee8 #bf616a #d8dee8
+client.focused_inactive     #00000000 #00000000 #d8dee8 #2f343f #2f343f
+client.unfocused            #00000000 #00000000 #56585C #2f343f #2f343f
+client.urgent               #00000000 #00000000 #d8dee8 #2f343f #2f343f
+client.placeholder          #00000000 #00000000 #d8dee8 #2f343f #2f343f
+client.background           #00000000
 
 smart_borders on
 
@@ -251,7 +251,7 @@ set $mode_gaps_bottom Bottom Gaps: +|-|0 (local), Shift + +|-|0 (global)
 set $mode_gaps_left Left Gaps: +|-|0 (local), Shift + +|-|0 (global)
 bindsym $mod+Shift+g mode "$mode_gaps"
 
-gaps inner 10
+gaps inner 20
 gaps outer 0
 gaps top 36
 

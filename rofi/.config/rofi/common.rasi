@@ -72,13 +72,13 @@ element.selected.urgent {
 }
 
 element.selected.active {
-    background-color: @selected-active-background;
-    text-color:       @selected-active-foreground;
+    background-color: @selected-normal-background;
+    text-color:       @active-foreground;
 }
 
 element.alternate.normal {
- background-color: @alternate-normal-background;
-    text-color:       @alternate-normal-foreground;
+    background-color: @alternate-normal-background;
+    text-color:    @alternate-normal-foreground;
 }
 
 element.alternate.urgent {
@@ -88,8 +88,9 @@ element.alternate.urgent {
 
 element.alternate.active {
     background-color: @alternate-active-background;
-    text-color:       @alternate-active-foreground;
+    text-color:       #FFFFFF;
 }
+
 
 mode-switcher {
     border:       2px 0 0;

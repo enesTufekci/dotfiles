@@ -91,6 +91,7 @@
       (add-hook 'typescript-tsx-mode-hook #'emmet-mode)
       (define-key evil-insert-state-map (kbd "C-e") 'nil)
       (define-key emmet-mode-keymap (kbd "C-e") 'emmet-expand-line)
+      (add-hook 'before-save-hook 'prettier-prettify)
 
       (setq web-mode-markup-indent-offset 2)
       (setq web-mode-css-indent-offset 2)
@@ -114,8 +115,10 @@
         )
        ))
 
+
   (add-to-list 'auto-mode-alist '("\\.tsx\\'" . typescript-mode))
   (add-to-list 'auto-mode-alist '("\\.spec.tsx\\'" . typescript-mode)))
+
 
 
 
@@ -131,5 +134,3 @@
   (interactive "P")
   (+ivy/project-search arg (car counsel-git-grep-history)))
 (map! :leader "s ." #'rerun-last-search)
-
-;; Hello
