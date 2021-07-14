@@ -18,8 +18,8 @@
 
 [colors]
 background = #00458588
-; foreground_active = #d79921
-foreground_active = #ebdbb2
+foreground_active = #000
+; foreground_active = #ebdbb2
 foreground_passive = #999999
 background-alt = #aa090909
 foreground = #dfdfdf
@@ -32,7 +32,7 @@ deep = #C251BD
 
 
 [bar/main]
-monitor = ${env:MONITOR:eDP-1-1}
+monitor = ${env:MONITOR:eDP1}
 width = 98%
 height = 64
 radius = 0
@@ -58,14 +58,14 @@ offset-y = 12
 offset-x = 40
 override-redirect = true
 
-font-0 = SF Mono:style=semibold:size=20;5
+font-0 = SF Mono:style=semibold:size=22;5
 font-1 = FontAwesome:size=20;5
 
 modules-left = xwindow
 ; modules-center = weather
 modules-right = weather temperature network pulseaudio battery date
 
-tray-position = none
+; tray-position = none
 tray-padding = 2
 ;tray-transparent = true
 ;tray-background = #0063ff
