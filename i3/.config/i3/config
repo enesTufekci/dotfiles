@@ -32,25 +32,20 @@ exec --no-startup-id nm-applet
 # Background
 exec --no-startup-id nitrogen --restore
 exec --no-startup-id redshift -l 53.5969031:9.9777908
-exec --no-startup-id betterlockscreen -w dim
-exec --no-startup-id source ~/.fehbg
 exec --no-startup-id dunst -config ~/.config/dunst/dunstrc
 exec --no-startup-id davmail ~/.config/.davmail.properties &
 exec_always --no-startup-id ~/.config/polybar/launch.sh &
 
 # Use pactl to adjust volume in PulseAudio.
-set $refresh_i3status killall -SIGUSR1 i3status
-bindsym XF86AudioRaiseVolume exec --no-startup-id pactl set-sink-volume @DEFAULT_SINK@ +10% && $refresh_i3status
-bindsym XF86AudioLowerVolume exec --no-startup-id pactl set-sink-volume @DEFAULT_SINK@ -10% && $refresh_i3status
-bindsym XF86AudioMute exec --no-startup-id pactl set-sink-mute @DEFAULT_SINK@ toggle && $refresh_i3status
+bindsym XF86AudioRaiseVolume exec --no-startup-id pactl set-sink-volume @DEFAULT_SINK@ +10% && pulsemixer --unmute && $refresh_i3status && ponymix get-volume | ~/.bin/progress-notify.sh audio
+bindsym XF86AudioLowerVolume exec --no-startup-id pactl set-sink-volume @DEFAULT_SINK@ -10% && pulsemixer --unmute && $refresh_i3status && ponymix get-volume | ~/.bin/progress-notify.sh audio
+
+bindsym XF86AudioMute exec --no-startup-id pactl set-sink-mute @DEFAULT_SINK@ toggle && $refresh_i3status && pulsemixer --get-mute | ~/.bin/progress-notify.sh muted
 bindsym XF86AudioMicMute exec --no-startup-id pactl set-source-mute @DEFAULT_SOURCE@ toggle && $refresh_i3status
 
-bindsym XF86MonBrightnessUp exec --no-startup-id brightnessctl set 3%+ 
+bindsym XF86MonBrightnessUp exec --no-startup-id brightnessctl set 3%+ && xbacklight -get | ~/.bin/progress-notify.sh brightness
 
-bindsym XF86MonBrightnessDown exec --no-startup-id brightnessctl set 3%- 
-
-bindsym $mod+n exec --no-startup-id kill -s USR1 $(pidof deadd-notification-center)
-
+bindsym XF86MonBrightnessDown exec --no-startup-id brightnessctl set 3%- && xbacklight -get | ~/.bin/progress-notify.sh brightness
 # Use Mouse+$mod to drag floating windows to their wanted position
 floating_modifier $mod
 
@@ -191,6 +186,8 @@ mode "resize" {
 
 bindsym $mod+r mode "resize"
 
+for_window [urgent=latest] focus
+
 title_align center
 for_window [class=".*"] title_format "<b>%title</b>"
 
@@ -217,7 +214,7 @@ for_window [class=".*"] title_format "<b>%title</b>"
 # }
 
 # window rules, you can find the window class using xprop
-for_window [class=".*"] border pixel 0
+for_window [class=".*"] border pixel 2
 new_window 1pixel
 
 for_window [class=".*"] title_format "<span><br>%title</span>"
@@ -231,12 +228,12 @@ for_window [class=Xfburn|GParted|System-config-printer.py|Lxtask|Pavucontrol|Exo
 
 
 # colour of border, background, text, indicator, and child_border
-client.focused              #00000000 #00161618 #d8dee8 #bf616a #d8dee8
-client.focused_inactive     #00000000 #00000000 #d8dee8 #2f343f #2f343f
-client.unfocused            #00000000 #00000000 #56585C #2f343f #2f343f
-client.urgent               #00000000 #00000000 #d8dee8 #2f343f #2f343f
-client.placeholder          #00000000 #00000000 #d8dee8 #2f343f #2f343f
-client.background           #00000000
+client.focused              #000000 #161618 #d8dee8 #bf616a #999deb
+client.focused_inactive     #000000 #000000 #d8dee8 #2f343f #2f343f
+client.unfocused            #000000 #000000 #56585C #2f343f #d8dee8
+client.urgent               #000000 #000000 #d8dee8 #2f343f #2f343f
+client.placeholder          #000000 #000000 #d8dee8 #2f343f #2f343f
+client.background           #000000
 
 smart_borders on
 

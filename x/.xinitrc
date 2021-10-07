@@ -73,6 +73,8 @@ get_session(){
 export GDK_SCALE=2
 export GDK_DPI_SCALE=0.5
 
+picom -b
+
 exec i3 --shmlog-size 0
 
 # exec $(get_session "$1")

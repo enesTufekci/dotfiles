@@ -1,0 +1,7 @@
+# -*- mode: snippet -*-
+name: pcc
+# uuid:
+key: pcc
+# condition: t
+# --
+const $1 = getPublicRuntimeConfig('$1');

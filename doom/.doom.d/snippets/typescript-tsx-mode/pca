@@ -1,0 +1,7 @@
+# -*- mode: snippet -*-
+name: app tld
+# uuid:
+key: pca
+# condition: t
+# --
+const APP_TLD = getPublicRuntimeConfig('APP_TLD');

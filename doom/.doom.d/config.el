@@ -25,36 +25,7 @@
 ;; There are two ways to load a theme. Both assume the theme is installed and
 ;; available. You can either set `doom-theme' or manually load a theme with the
 ;; `load-theme' function. This is the default:
-(setq doom-theme 'doom-gruvbox)
-
-(setq light-theme 'doom-gruvbox-light)
-(setq dark-theme  'doom-gruvbox)
-
-(defun night-mode ()
-  (interactive)
-  (load-theme dark-theme t)
-  (doom/reload-theme))
-
-(defun day-mode ()
-  (interactive)
-  (load-theme light-theme t)
-  (doom/reload-theme))
-
-
-(defun auto-theme ()
-  "Select the theme automatically based on the time of day."
-  (require 'solar)
-  (let* ((cur-hour (string-to-number (substring (current-time-string) 11 13)))
-         (sun-events (solar-sunrise-sunset (calendar-current-date)))
-         (sunrise (caar sun-events))
-         (sunset  (caadr sun-events)))
-    (if (and (> cur-hour sunrise) (< cur-hour sunset))
-        (day-mode)
-        (night-mode))))
-
-(after! doom-theme
-  (auto-theme))
-
+(setq doom-theme 'doom-miramare)
 
 ;; If you use `org' and don't want your org files in the default location below,
 ;; change `org-directory'. It must be set before org loads!
@@ -134,3 +105,12 @@
   (interactive "P")
   (+ivy/project-search arg (car counsel-git-grep-history)))
 (map! :leader "s ." #'rerun-last-search)
+
+(setq jiralib-url "https://moebel-de.atlassian.net")
+;; P4yEE9puvZJetEuKWoLI1895
+
+;; (require 'mmm-mode)
+;; (setq mmm-global-mode 'maybe)
+
+;; (my-mmm-markdown-auto-class "typescript" 'typescript-mode)
+;; (my-mmm-markdown-auto-class "tsx" 'typescript-tsx-mode)

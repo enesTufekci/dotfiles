@@ -139,6 +139,41 @@ ex ()
 
 export PATH=$HOME/.yarn/bin:$PATH;
 export PATH=$HOME/.deno/bin:$PATH;
+export PATH=$HOME/.bin:$PATH;
+export PATH=$HOME/.emacs.d/bin:$PATH;
+export PATH=~/.npm-global/bin:$PATH
+
+backup(){
+  mv $1 "$1.backup"
+}
+
+mw(){
+  mv ~/Downloads/*.jpg ~/Pictures/wallpapers/
+}
+
+tp() {
+  pkill picom;
+  sleep 0.1;
+  picom -b;
+}
+
+c() {
+  clear;
+}
+
+sa() {
+  open "https://zoom.us/j/94554119554?pwd=RXBINEtIZlc3bWhTQUUxcVh0cDRPdz09"
+}
+
+ns() {
+  notify-send $1;
+}
 
 
-eval "$(starship init bash)"
+alias sn='shutdown now'
+alias ss='flameshot gui'
+
+# Added by serverless binary installer
+export PATH="$HOME/.serverless/bin:$PATH"
+
+[[ -r "/usr/share/z/z.sh" ]] && source /usr/share/z/z.sh

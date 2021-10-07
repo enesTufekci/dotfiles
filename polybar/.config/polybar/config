@@ -20,11 +20,11 @@
 background = #00458588
 foreground_active = #000
 ; foreground_active = #ebdbb2
-foreground_passive = #999999
+foreground_passive = #2828282
 background-alt = #aa090909
-foreground = #dfdfdf
+foreground = #282828
 foreground-alt = #555
-primary = #C251BD
+primary = #282828
 secondary = #8AB2FC
 alert = #9FC4D9
 label = #cc000000
@@ -45,21 +45,23 @@ foreground = ${colors.foreground}
 line-size = 4
 line-color = #f00
 
-border-size = 0
+border-size = 4
 border-color = #00000000
-
+module-border = 2
 module-margin = 2
 
-padding-left = 2
-padding-right = 2
+padding-left = 0
+padding-right = 0
 padding-bottom= 10
 
 offset-y = 12
-offset-x = 40
+offset-x = 1%
 override-redirect = true
 
 font-0 = SF Mono:style=semibold:size=22;5
 font-1 = FontAwesome:size=20;5
+font-2 = Font Awesome 5 Free Solid:size=20;5
+font-3 = Weather Icons:size=20;5
 
 modules-left = xwindow
 ; modules-center = weather
@@ -142,7 +144,8 @@ format-disconnected = <label-disconnected>
 ;   <label-packetloss>
 ;   <animation-packetloss>
 format-packetloss = <label-connected>
-label-connected =  %essid% - %downspeed%
+label-connected =  %downspeed%
+; label-connected =  %essid% - %downspeed%
 label-connected-foreground = ${colors.foreground_active}
 
 ; Default: (none)
@@ -161,7 +164,7 @@ label-foreground = ${colors.foreground_active}
 
 [module/battery]
 type = internal/battery
-full-at = 98
+full-at = 94
 ; Use the following command to list batteries and adapters:
 ; $ ls -1 /sys/class/power_supply/
 battery = BAT0
@@ -192,7 +195,7 @@ animation-charging-framerate = 750
 [module/pulseaudio]
 type = internal/pulseaudio
 
-; Sink to be used, if it exists (find using `pacmd list-sinks`, name field)
+; Sink to be used, if it exists (find using `pacmd list- sinks`, name field)
 ; If not, uses default sink
 sink = alsa_output.pci-0000_12_00.3.analog-stereo
 
@@ -241,13 +244,16 @@ click-right = pavucontrol
 type = custom/script
 exec = i8kctl temp
 label-foreground=${colors.foreground_active}
+label =  %output%°
 interval = 1
 
 
 [module/weather]
 type = custom/script
 exec = ~/.config/polybar/weather
+label-active-font=3;
 label-foreground=${colors.foreground_active}
+label = %output%
 interval = 300
 
 [settings]

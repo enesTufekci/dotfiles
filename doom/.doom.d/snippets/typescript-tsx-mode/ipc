@@ -1,0 +1,5 @@
+# -*- mode: snippet -*-
+name: ipc
+key: ipc
+# --
+import { getPublicRuntimeConfig } from '@helpers/getPublicRuntimeConfig';
