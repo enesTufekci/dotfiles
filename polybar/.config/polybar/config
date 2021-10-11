@@ -61,7 +61,7 @@ override-redirect = true
 font-0 = SF Mono:style=semibold:size=22;5
 font-1 = FontAwesome:size=20;5
 font-2 = Font Awesome 5 Free Solid:size=20;5
-font-3 = Weather Icons:size=20;5
+font-3 = WeatherIcons:size=20;5
 
 modules-left = xwindow
 ; modules-center = weather
@@ -250,11 +250,12 @@ interval = 1
 
 [module/weather]
 type = custom/script
-exec = ~/.config/polybar/weather
-label-active-font=3;
+exec = busctl --user -j get-property io.ntfd /weather openweathermap.strings RenderedTemplate | jq -r .data
+interval = 60
+label-active-font=4;
+label-font=4;
 label-foreground=${colors.foreground_active}
 label = %output%
-interval = 300
 
 [settings]
 screenchange-reload = true

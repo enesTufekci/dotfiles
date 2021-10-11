@@ -33,7 +33,8 @@ exec --no-startup-id nm-applet
 exec --no-startup-id nitrogen --restore
 exec --no-startup-id redshift -l 53.5969031:9.9777908
 exec --no-startup-id dunst -config ~/.config/dunst/dunstrc
-exec --no-startup-id davmail ~/.config/.davmail.properties &
+# exec --no-startup-id davmail ~/.config/.davmail.properties &
+exec --no-startup-id ntfd &
 exec_always --no-startup-id ~/.config/polybar/launch.sh &
 
 # Use pactl to adjust volume in PulseAudio.
