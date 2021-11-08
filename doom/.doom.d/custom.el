@@ -18,7 +18,7 @@
  '(linum-format " %7i ")
  '(objed-cursor-color "#964C7B")
  '(package-selected-packages
-   '(mmm-mode poly-markdown markdown-mode sublime-themes vscode-dark-plus-theme gdscript-mode rainbow-identifiers))
+   '(ox-bb lsp-tailwindcss mmm-mode poly-markdown markdown-mode sublime-themes vscode-dark-plus-theme gdscript-mode rainbow-identifiers))
  '(pdf-view-midnight-colors (cons "#FFFFFF" "#27212E"))
  '(rustic-ansi-faces
    ["#27212E" "#964C7B" "#74DFC4" "#FFE261" "#40B4C4" "#EB64B9" "#B4DCE7" "#FFFFFF"])

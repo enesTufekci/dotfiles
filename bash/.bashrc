@@ -173,6 +173,11 @@ ns() {
 alias sn='shutdown now'
 alias ss='flameshot gui'
 
+mm() {
+  open "https://gitlab.production.moebel.de/workspace/consumer/end-user-frontend-monorepo/-/merge_requests?scope=all&utf8=%E2%9C%93&state=opened&author_username=enesTufekci"
+
+}
+
 # Added by serverless binary installer
 export PATH="$HOME/.serverless/bin:$PATH"
 

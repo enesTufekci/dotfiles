@@ -109,8 +109,3 @@
 (setq jiralib-url "https://moebel-de.atlassian.net")
 ;; P4yEE9puvZJetEuKWoLI1895
 
-;; (require 'mmm-mode)
-;; (setq mmm-global-mode 'maybe)
-
-;; (my-mmm-markdown-auto-class "typescript" 'typescript-mode)
-;; (my-mmm-markdown-auto-class "tsx" 'typescript-tsx-mode)

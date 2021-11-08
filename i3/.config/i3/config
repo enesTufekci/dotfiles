@@ -33,13 +33,14 @@ exec --no-startup-id nm-applet
 exec --no-startup-id nitrogen --restore
 exec --no-startup-id redshift -l 53.5969031:9.9777908
 exec --no-startup-id dunst -config ~/.config/dunst/dunstrc
+exec --no-startup-id /usr/bin/emacs --daemon &
 # exec --no-startup-id davmail ~/.config/.davmail.properties &
 exec --no-startup-id ntfd &
 exec_always --no-startup-id ~/.config/polybar/launch.sh &
 
 # Use pactl to adjust volume in PulseAudio.
-bindsym XF86AudioRaiseVolume exec --no-startup-id pactl set-sink-volume @DEFAULT_SINK@ +10% && pulsemixer --unmute && $refresh_i3status && ponymix get-volume | ~/.bin/progress-notify.sh audio
-bindsym XF86AudioLowerVolume exec --no-startup-id pactl set-sink-volume @DEFAULT_SINK@ -10% && pulsemixer --unmute && $refresh_i3status && ponymix get-volume | ~/.bin/progress-notify.sh audio
+bindsym XF86AudioRaiseVolume exec --no-startup-id pactl set-sink-volume @DEFAULT_SINK@ +5% && pulsemixer --unmute && $refresh_i3status && ponymix get-volume | ~/.bin/progress-notify.sh audio
+bindsym XF86AudioLowerVolume exec --no-startup-id pactl set-sink-volume @DEFAULT_SINK@ -5% && pulsemixer --unmute && $refresh_i3status && ponymix get-volume | ~/.bin/progress-notify.sh audio
 
 bindsym XF86AudioMute exec --no-startup-id pactl set-sink-mute @DEFAULT_SINK@ toggle && $refresh_i3status && pulsemixer --get-mute | ~/.bin/progress-notify.sh muted
 bindsym XF86AudioMicMute exec --no-startup-id pactl set-source-mute @DEFAULT_SOURCE@ toggle && $refresh_i3status
@@ -53,9 +54,12 @@ floating_modifier $mod
 # start a terminal
 bindsym $mod+Return exec alacritty
 
+bindsym $mod+Shift+j exec flameshot gui
+bindsym $mod+Shift+o exec google-chrome-stable
 # kill focused window
 bindsym $mod+q kill
 
+bindsym $mod+Shift+Return exec emacsclient -c -a 'emacs'
 # start dmenu (a program launcher)
 bindsym $mod+d exec rofi -show drun
 bindsym $mod+Shift+d exec rofi -show window
@@ -215,7 +219,7 @@ for_window [class=".*"] title_format "<b>%title</b>"
 # }
 
 # window rules, you can find the window class using xprop
-for_window [class=".*"] border pixel 2
+for_window [class=".*"] border pixel 3
 new_window 1pixel
 
 for_window [class=".*"] title_format "<span><br>%title</span>"
